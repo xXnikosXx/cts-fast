@@ -1,0 +1,22 @@
+[
+  {
+    "email": "test@ew.gr",
+    "timestamp": "2024-05-23T16:08:47.714Z",
+    "transaction": "Subscribe"
+  },
+  {
+    "email": "123@we.st",
+    "timestamp": "2024-05-23T16:10:04.093Z",
+    "transaction": "Subscribe"
+  },
+  {
+    "email": "test25@5.gr",
+    "timestamp": "2024-05-25T06:50:31.393Z",
+    "transaction": "Subscribe"
+  },
+  {
+    "email": "graegs@gfsd.gr",
+    "timestamp": "2024-05-25T08:39:52.976Z",
+    "transaction": "Subscribe"
+  }
+]
