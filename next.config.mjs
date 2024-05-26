@@ -7,6 +7,7 @@ export default (phase, { defaultConfig }) => {
   const nextConfig = {
     /* config options here */
     distDir: 'build',
+    staticPageGenerationTimeout: 2000,
   experimental: {
     // This is experimental but can
     // be enabled to allow parallel threads
