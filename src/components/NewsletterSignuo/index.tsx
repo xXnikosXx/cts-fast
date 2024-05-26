@@ -23,7 +23,7 @@ export function NewsletterSignup() {
   const onSubmit = async (e: any) => {
     setWaiting(true);
     try {
-      console.log(e.email)
+      console.log(JSON.stringify({ email: e.email }));
       // Make a POST request to the custom server's endpoint
       const response = await fetch("/api/submit-email", {
         method: "POST",
