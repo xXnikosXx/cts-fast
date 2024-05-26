@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useState } from "react";
 import { BackgroundBeams } from "@/components/ui/background-beams";
 
 import { Button } from "@/components/ui/button";
@@ -15,29 +16,38 @@ export function NewsletterSignup() {
 
   const { register, handleSubmit, reset } = useForm();
 
-  const onSubmit = async (data: object) => {
+  const [email, setEmail] = useState("");
+
+  const [waiting, setWaiting] = useState(false);
+
+  const onSubmit = async (e: any) => {
+    setWaiting(true);
     try {
+      // console.log(e.email)
+      // Make a POST request to the custom server's endpoint
       const response = await fetch("/api/submit-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ "email": e.email }),
       });
 
-      const result = await response.json();
-
       if (response.ok) {
-        reset();
-        alert(t("newsletter-200"));
+        alert("Email submitted successfully");
+        // Reset the email input field after successful submission
+        setEmail("");
+        setWaiting(false);
       } else {
-        alert(result.message || "Failed to submit email.");
+        console.error("Failed to submit email:", response.statusText);
+        setWaiting(false);
+        alert("Failed to submit email")
       }
-    } catch (error) {
-      console.error("Error:", error);
-      alert(t("newsletter-500"));
+    } catch (error: any) {
+      console.error("Error submitting email:", error.message);
     }
   };
+  
   const { t } = useTranslation();
 
   return (
@@ -63,6 +73,11 @@ export function NewsletterSignup() {
           <Button variant="accent" type="submit">
             {t("newsletter-btn")}
           </Button>
+          {waiting ? (
+            <div className="rounded-md h-7 w-7 border-4 border-t-4 border-p-brand-teal animate-spin ml-7"></div>
+          ) : (
+            ""
+          )}
         </form>
         <p className="text-neutral-400 max-w-2xl mx-auto my-2 text-sm text-center relative z-10 mb-10">
           {t("newsletter-tos")}
