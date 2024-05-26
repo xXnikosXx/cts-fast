@@ -29,15 +29,7 @@ app.prepare().then(() => {
   // Handle POST request for submitting email
   server.post('/api/submit-email', async (req, res) => {
     try {
-    //   console.log(req)
       const { email } = req.body;
-
-      // Generate a unique token for the unsubscribe link
-      const token = crypto.randomBytes(20).toString('hex');
-
-      // Store the email and token in the database
-      const stmt = db.prepare('INSERT INTO subscriptions (email, token) VALUES (?, ?)');
-      stmt.run(email, token);
 
       // Send an email to the specified address (you)
     await transporter.sendMail({
@@ -48,14 +40,13 @@ app.prepare().then(() => {
     html: `<p>You have a new Newsletter subscriber:<br/><br/>Email: ${email}</p>`,
     });
 
-    // Send a confirmation email to the user with the unsubscribe link
-    const unsubscribeUrl = `${process.env.BASE_URL}/api/unsubscribe?token=${token}`;
+    // Send a confirmation email to the user with the unsubscribe prompt
     await transporter.sendMail({
       from: `"Custom Tech Solutions" <${process.env.SMTP_USER}>`,
       to: email, // User's email address
       subject: 'Newsletter Subscription',
     text: `Hello!\n\nThank you for subscribing to our newsletter. You will be included in future communications from us!\n\n\nYou can unsubscribe by clicking on the link below:\nhttps://www.ctsolutions.gr/unsubscribe`,
-    html: `<p>Hello!<br/><br/>Thank you for subscribing to our newsletter. You will be included in future communications from us!<br/><br/><br/>You can unsubscribe by clicking on the link below:<br/><a href=${unsubscribeUrl} style="color: red;">UNSUBSCRIBE</a></p>`,
+    html: `<p>Hello!<br/><br/>Thank you for subscribing to our newsletter. You will be included in future communications from us!<br/><br/><br/>You can unsubscribe by sending an email at:<br/><a href="mailto:info@ctsolutions.gr" style="color: red;">info@ctsolutions.gr</a></p>`,
     });
 
       return res.status(201).json({ success: true });
@@ -65,30 +56,6 @@ app.prepare().then(() => {
     }
   }
 );
-
-// Handle GET request for unsubscribing
-server.get('/api/unsubscribe', (req, res) => {
-  try {
-    const { token } = req.query; // Extract the token from the query parameters
-
-    // Retrieve the email associated with the token from the database
-    const stmt = db.prepare('SELECT email FROM subscriptions WHERE token = ?');
-    const row = stmt.get(token);
-
-    if (!row) {
-      return res.status(404).json({ success: false, message: 'Token not found' });
-    }
-
-    const { email } = row;
-
-    // Delete the subscription record from the database
-    db.prepare('DELETE FROM subscriptions WHERE token = ?').run(token);
-
-    return res.status(200).json({ success: true, message: `The email ${email} has been unsubscribed.` });
-  } catch (error) {
-    return res.status(500).json({ success: false, error: error.message });
-  }
-});
 
 // POST route for form submission
 server.post('/api/contact', async (req, res) => {
