@@ -1,7 +1,12 @@
-// import "dotenv/config"
+// @ts-check
 
-module.exports = {
-  distDir: 'build',
+export default (phase, { defaultConfig }) => {
+  /**
+   * @type {import('next').NextConfig}
+   */
+  const nextConfig = {
+    /* config options here */
+    distDir: 'build',
   experimental: {
     // This is experimental but can
     // be enabled to allow parallel threads
@@ -9,4 +14,6 @@ module.exports = {
     workerThreads: false,
     cpus: 4
   }
-};
+  }
+  return nextConfig
+}
