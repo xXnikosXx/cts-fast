@@ -31,6 +31,8 @@ app.prepare().then(() => {
     try {
       const { email } = req.body;
 
+      
+
       // Send an email to the specified address (you)
     await transporter.sendMail({
       from: `"Newsletter signup (ctsolutions.gr)" <${process.env.SMTP_USER}>`,
