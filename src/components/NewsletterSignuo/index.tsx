@@ -10,43 +10,54 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 
 
-import { Form, useForm } from "react-hook-form";
+import { Form, useForm, SubmitHandler } from "react-hook-form";
 
 export function NewsletterSignup() {
 
-  const { register, handleSubmit, reset } = useForm();
+interface FormInputs {
+  email: string;
+}
 
-  const [email, setEmail] = useState("");
+
 
   const [waiting, setWaiting] = useState(false);
 
-  const onSubmit = async (e: any) => {
-    setWaiting(true);
-    try {
-      console.log(e.email)
-      // Make a POST request to the custom server's endpoint
-      const response = await fetch("/api/submit-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ "email": e.email }),
-      });
+const {
+  register,
+  handleSubmit,
+  formState: { errors },
+} = useForm<FormInputs>();
 
-      if (response.ok) {
-        alert("Email submitted successfully");
-        // Reset the email input field after successful submission
-        setEmail("");
-        setWaiting(false);
-      } else {
-        console.error("Failed to submit email:", response.statusText);
-        setWaiting(false);
-        alert("Failed to submit email")
-      }
-    } catch (error: any) {
-      console.error("Error submitting email:", error.message);
+const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+  setWaiting(true);
+  try {
+    const response = await fetch("/api/submit-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+      setWaiting(false);
+      alert("Error submitting form");
+    } else {
+      alert("form submitted successfully!");
+      setWaiting(false);
     }
-  };
+
+    const result = await response.json();
+    console.log(result); // Handle the response from the server
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert(t("Error submitting form"));
+    setWaiting(false);
+  }
+};
+
+
   
   const { t } = useTranslation();
 
@@ -69,7 +80,11 @@ export function NewsletterSignup() {
             {...register("email", { required: true })}
             className="min-w-[100px]"
             placeholder={t("newsletter-placeholder")}
+            {...register("email", { required: `${t("cf-em-err")}` })}
           />
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+          )}
           <Button variant="accent" type="submit">
             {t("newsletter-btn")}
           </Button>
