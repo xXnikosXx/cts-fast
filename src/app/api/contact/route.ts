@@ -19,6 +19,7 @@ export async function POST(req: NextRequest) {
   const mailOptions = {
     from: `"Custom Tech Solutions" <${process.env.SMTP_USER}>`,
     to: email,
+    bcc: `info@ctsolutions.gr`,
     subject: 'We received your info and will contact you soon!',
     text: `Hello, ${firstName}!\n\nThank you for contacting us!\nWe received your info from our contact form and will make sure to call or email you in a timely manner.\nFor now, here's all the info we received, just to double-check ;)\n\nFirst Name: ${firstName}\nLast Name: ${lastName}\nEmail: ${email}\nPhone Number: ${phone ? phone : "N/A"}\nMessage: ${message}\n\n\nPlease do not reply at this email address, as it is not monitored. We will get back to you soon!`,
     html: `<p>Hello, ${firstName}!<br /><br/>Thank you for contacting us!<br />We received your info from our contact form and will make sure to call or email you in a timely manner.<br />For now, here's all the info we received, just to double-check ;)<br /><br /><strong>First Name:</strong> ${firstName}<br /><strong>Last Name:</strong> ${lastName}<br /><strong>Email:</strong> ${email}<br /><strong>Phone Number:</strong> ${phone ? phone : "N/A"}<br /><strong>Message:</strong> ${message}<br /><br /><br /> <u>Please, do <strong>NOT</strong> reply to this email address, as it is not monitored. We will get back to you soon!</u>`,
