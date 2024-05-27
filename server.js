@@ -29,10 +29,10 @@ app.prepare().then(() => {
   // Handle POST request for submitting email
   server.post('/api/submit-email', async (req, res) => {
     console.log(req);
-    try {
       const { email } = req.body;
 
       console.log(email)
+    try {
 
       // Send an email to the specified address (you)
     await transporter.sendMail({
