@@ -51,13 +51,13 @@ export default function LanguageChanger() {
   return (
     <Select onValueChange={handleChange} value={currentLocale}>
       <SelectTrigger className="w-[180px] border-0">
-        <SelectValue placeholder="en" />
+        <SelectValue placeholder={currentLocale} />
       </SelectTrigger>
       <SelectContent className="z-50 bg-p-neutral-black">
         <SelectGroup>
           <SelectLabel>Locales</SelectLabel>
           <SelectItem value="en">en</SelectItem>
-          <SelectItem value="el">ελ</SelectItem>
+          <SelectItem value="el">el</SelectItem>
         </SelectGroup>
       </SelectContent>
     </Select>
