@@ -53,7 +53,7 @@ export default function Footer() {
       </div>
       <hr className="mt-10 xl:hidden" />
       <div className="grid grid-rows-1 grid-cols-2">
-        <div className="text-nowrap justify-self-start flex-col flex m-10 text-sm md:text-lg lg:text-md">
+        <div className="text-nowrap justify-self-start flex-col flex m-10 text-sm md:text-sm lg:text-sm">
           <p className="mb-5 xl:mb-0">
             {t("footer-1")}
             <br className="xl:hidden" /> {t("footer-2")}

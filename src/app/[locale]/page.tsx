@@ -32,6 +32,7 @@ import { HomeMeteorsCard } from "@/components/MeteorsCard";
 import { Map } from "@/components/Map";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { RocketIcon } from "@radix-ui/react-icons";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
 
 
 export default function Home() {
@@ -75,6 +76,41 @@ export default function Home() {
 
   // Code for alert
   const [showAlert, setShowAlert] = useState(true);
+
+  const services = [
+    {
+      title: t("s2-1-title"),
+      description:
+        t("s2-1-p"),
+      link: "",
+    },
+    {
+      title: t("s2-2-title"),
+      description:
+        t("s2-2-p"),
+      link: "",
+    },
+    {
+      title: t("s2-3-title"),
+      description: t("s2-3-p"),
+      link: "",
+    },
+    {
+      title: t("s2-4-title"),
+      description: t("s2-4-p"),
+      link: "",
+    },
+    {
+      title: t("s2-5-title"),
+      description: t("s2-5-p"),
+      link: "",
+    },
+    {
+      title: t("s2-6-title"),
+      description: t("s2-6-p"),
+      link: "",
+    },
+  ];
 
   return (
     <>
@@ -216,7 +252,7 @@ export default function Home() {
             <div className="lg:w-[50%] w-full flex justify-center">
               <HomeMeteorsCard />
             </div>
-            <div className="m-14 text-wrap w-[90%] lg:w-[50%]">
+            <div className="px-5 mb-20 text-wrap w-[90%] lg:w-[50%]">
               <h6>{t("s1-sub")}</h6>
               <h1 className="text-4xl lg:text-5xl font-bold mb-5 leading-tight">
                 {t("s1-title")}
@@ -257,46 +293,7 @@ export default function Home() {
               {t("s2-p")} <br /> {t("s2-p-2")} <br /> {t("s2-p-3")}
             </p>
           </div>
-          <div className="flex flex-col lg:flex-row text-center mb-12">
-            <div className="px-10 xl:py-10 basis-1/3">
-              <h2 className="text-xl lg:text-3xl font-bold mb-2 xl:mb-7">
-                {t("s2-1-title")}
-              </h2>
-              <p className="text-md lg:text-lg mb-7 xl:mb-0">{t("s2-1-p")}</p>
-            </div>
-            <div className="px-10 xl:py-10 basis-1/3">
-              <h2 className="text-xl lg:text-3xl font-bold mb-2 xl:mb-7">
-                {t("s2-2-title")}
-              </h2>
-              <p className="text-md lg:text-lg mb-7 xl:mb-0">{t("s2-2-p")}</p>
-            </div>
-            <div className="px-10 xl:py-10 basis-1/3">
-              <h2 className="text-xl lg:text-3xl font-bold mb-2 xl:mb-7">
-                {t("s2-3-title")}
-              </h2>
-              <p className="text-md lg:text-lg">{t("s2-3-p")}</p>
-            </div>
-          </div>
-          <div className="flex flex-col lg:flex-row text-center mb-12">
-            <div className="px-10 xl:py-10 basis-1/3">
-              <h2 className="text-xl lg:text-3xl font-bold mb-2 xl:mb-7">
-                {t("s2-4-title")}
-              </h2>
-              <p className="text-md lg:text-lg mb-7 xl:mb-0">{t("s2-4-p")}</p>
-            </div>
-            <div className="px-10 xl:py-10 basis-1/3">
-              <h2 className="text-xl lg:text-3xl font-bold mb-2 xl:mb-7">
-                {t("s2-5-title")}
-              </h2>
-              <p className="text-md lg:text-lg mb-7 xl:mb-0">{t("s2-5-p")}</p>
-            </div>
-            <div className="px-10 xl:py-10 basis-1/3">
-              <h2 className="text-xl lg:text-3xl font-bold mb-2 xl:mb-7">
-                {t("s2-6-title")}
-              </h2>
-              <p className="text-md lg:text-lg">{t("s2-6-p")}</p>
-            </div>
-          </div>
+            <HoverEffect items={services} />
           <div className="flex justify-center column-2">
             <Link
               href="/contact"
@@ -306,6 +303,7 @@ export default function Home() {
             </Link>
           </div>
         </section>
+
 
         {/*  */}
         {/* Newsletter Signup Form */}
@@ -325,7 +323,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col xl:flex-row">
             <div className="flex flex-col flex-1">
-              <div className="flex-1">
+              <div className="flex-1 mb-10">
                 <h2 className="text-2xl font-semibold mb-3">
                   {t("s3-1-title")}
                 </h2>
@@ -340,7 +338,7 @@ export default function Home() {
                   {t("s3-1-link")}
                 </Link>
               </div>
-              <div className="flex-1">
+              <div className="flex-1 mb-10">
                 <h2 className="text-2xl font-semibold mb-3">
                   {t("s3-2-title")}
                 </h2>
@@ -355,7 +353,7 @@ export default function Home() {
                   {t("s3-2-link")}
                 </Link>
               </div>
-              <div className="flex-1">
+              <div className="flex-1 mb-10">
                 <h2 className="text-2xl font-semibold mb-3">
                   {t("s3-3-title")}
                 </h2>

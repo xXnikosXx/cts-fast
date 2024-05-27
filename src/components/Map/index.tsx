@@ -6,7 +6,7 @@ import Image from "next/image";
 export function Map() {
   return (
     <div
-      className="h-[40rem] w-full flex items-center justify-center"
+      className="h-[35rem] w-full flex items-center justify-center"
       onClick={() =>
         window.open("https://maps.app.goo.gl/9i98NaRodMhk9gj36", "_blank")
       }
@@ -15,7 +15,7 @@ export function Map() {
         title="maps.google.com"
         href="https://maps.app.goo.gl/9i98NaRodMhk9gj36"
       >
-        <div className="w-[25rem] md:w-[45rem] xl:w-[40rem] 2xl:w-[45rem] h-[35rem]">
+        <div className="w-[20rem] md:w-[45rem] xl:w-[40rem] 2xl:w-[45rem] h-[25rem] md:h-[35rem]">
           <Image
             src={`/map.png`}
             alt="hero"

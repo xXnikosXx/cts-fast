@@ -1,6 +1,7 @@
 "use client"
 import React from "react";
 
+import { HoverEffectLi } from "@/components/ui/card-hover-effect-li";
 import { useTranslation } from "react-i18next";
 
 
@@ -29,9 +30,30 @@ const Column: React.FC<ColumnProps> = ({
 const ThreeColLayout: React.FC = () => {
   const { t } = useTranslation();
 
+  const contactInfo = [
+    {
+      title: t("email"),
+      description: t("email-p"),
+      link: "mailto:hello@ctsolutions.gr",
+      linkPreview: t("email-link"),
+    },
+    {
+      title: t("phone"),
+      description: t("phone-p"),
+      link: "tel:+306974029087",
+      linkPreview: t("phone-link"),
+    },
+    {
+      title: t("office"),
+      description: t("office-p"),
+      link: "https://maps.app.goo.gl/9i98NaRodMhk9gj36",
+      linkPreview: t("office-link"),
+    },
+  ];
+
   return (
     <div className="container mx-auto p-4">
-      <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center gap-20">
+      {/* <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center items-center gap-20">
         <Column
           title={t("email")}
           content={t("email-p")}
@@ -48,9 +70,10 @@ const ThreeColLayout: React.FC = () => {
           title={t("office")}
           content={t("office-p")}
           linkText={t("office-link")}
-          linkHref="https://maps.google.com"
+          linkHref="https://maps.app.goo.gl/9i98NaRodMhk9gj36"
         />
-      </div>
+      </div> */}
+      <HoverEffectLi items={contactInfo} />
     </div>
   );
 };
