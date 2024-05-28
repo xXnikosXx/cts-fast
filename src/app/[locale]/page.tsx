@@ -146,7 +146,7 @@ export default function Home() {
 
         {/* Above the Fold */}
         <section className="flex flex-col xl:flex-row column-2 h-screen items-center">
-          <div className="text-wrap mx-auto mt-[200px] xl:mt-0 xl:pl-10 flex flex-col justify-start">
+          <div className="text-wrap mx-auto mt-[200px] xl:mt-0 xl:pl-10 flex flex-col lg:max-w-[50%] justify-start">
             <HeroHighlight>
               <motion.h1
                 initial={{
@@ -243,7 +243,7 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <div className="h-[400px] md:h-[500px] xl:hidden"></div>
+        <div className="h-[500px] xl:hidden"></div>
         {/* Below the Fold */}
         {/*  */}
         {/* IT Support Section */}

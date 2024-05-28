@@ -87,11 +87,6 @@ export default function NavLarge() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem className="mx-2">
-          {/* <Link href="" legacyBehavior passHref> */}
-          <LanguageChanger />
-          {/* </Link> */}
-        </NavigationMenuItem>
-        <NavigationMenuItem className="mx-2">
           <Link href="" legacyBehavior passHref>
             <Link
               href=""

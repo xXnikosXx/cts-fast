@@ -87,11 +87,6 @@ export default function NavMdDropdown() {
                     <ThemeToggle />
                   </Link>
                 </NavigationMenuItem>
-                <NavigationMenuItem className="mx-2">
-                  {/* <Link href="" legacyBehavior passHref> */}
-                  <LanguageChanger />
-                  {/* </Link> */}
-                </NavigationMenuItem>
               </span>
               <NavigationMenuItem className="flex justify-center lg:list-item mx-2">
                 <Link href="" legacyBehavior passHref>
