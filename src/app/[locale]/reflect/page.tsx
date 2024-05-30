@@ -15,7 +15,7 @@ export default function Reflect() {
       <div className="pt-[100px] pb-10 px-12 flex justify-center items-center flex-col gap-7">
         <Avatar>
           <AvatarImage
-            src="https://github.com/shadcn.png"
+            src="/avatar.jpg"
             alt="Nikolaos Motos"
           />
           <AvatarFallback>NM</AvatarFallback>
