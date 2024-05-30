@@ -22,9 +22,9 @@ export default function Reflect() {
         </Avatar>
         <h1 className="text-4xl font-bold">Nikolaos Motos</h1>
         <p className="pl-2">
-          I'm Nikos, a student and business owner from Greece! I came @ Reflect
-          in order to meet new, interesting people, make connections with
-          like-minded individuals, learn new things and exchanges ideas.
+          I&apos;m Nikos, a student and business owner from Greece! I came @
+          Reflect in order to meet new, interesting people, make connections
+          with like-minded individuals, learn new things and exchanges ideas.
         </p>
         <Link
           className="transition md:w-[420px] w-[300px] mx-auto h-14 bg-secondary flex items-center justify-center rounded-lg hover:bg-primary hover:text-black hover:scale-95 relative"
